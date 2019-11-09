@@ -11,7 +11,7 @@
 		int*	components; 
 	};
 	
-	typedef struct  __polynome * Polynome;
+	typedef struct __polynome* Polynome;
 
 - [x] Function for initializing a polynome
 	- @param {int} 				- degree of the polynome.
@@ -50,20 +50,49 @@
 								  0 otherwise
 		int find_component_end(const char*, int);
 		
-	-[ ]Extracting functions
+	-[ ]Extracting functions (Reserved to Sidy)
 		-[ ]Function for extraction sign
+			- @hint: just search in the left side for sign. When the sign('+'/'-')
+			- 		 is detected return the good value. Sometimes sign is omitted,
+			-		 so we need to break and return the good value at the first
+			-		 digit or 'x'.
+			-
+			- @param  {const char*}	- polynome
+			- @param  {int} 		- start position of component
+			- @param  {int} 		- end position of component
+			- @return {int}			- 1 if positive, -1 if negative and 0 means that error occured
+			int extract_sign(const char*, int, int);
 		-[ ]Function for extraction number
+			- @hint: Sign MUST NOT be consider, only the coefficient
+			- 		 is important. we need to consider the first digit
+			-        starting by the left after the sign and stop when
+			-		 'x' or end position is reach. The conversion MUST
+			-		 be done.
+			-
+			- @param  {const char*}	- polynome
+			- @param  {int}			- start position of component
+			- @param  {int}			- end position of component
+			- @param  {int*}		- variable to store number
+			- @return {int}			- 1 for success, 0 otherwise
+			- int extract_number(const char*, int, int, int*);
 		-[ ]Function for extraction power
 	
-	-[ ]Function for validing and adding a component(monome/constant) regarding the previous component
-		- @param {const char *} - polynome
-		- @param {int} 			- start position of a component
-		- @param {int} 			- end position of a component
-		- @param {int}			- power of the previous monome
-		- @param {Polynome}		- the polynome
-		- @return 				- 1 if the monome is correct and successfully register in the polynome,
+	-[x]Function for validing a component(monome/constant).
+		- @param  {const char*}	- polynome
+		- @param  {int}			- start position of component
+		- @param  {int}			- end position of component
+		- @return {int}			- 1 if valid, 0 otherwise.
+		int is_valid_component(const char*, int, int);
+	
+	-[ ]Function for and adding a component(monome/constant) regarding the previous component
+		- @param  {const char*}	- polynome
+		- @param  {int} 		- start position of component
+		- @param  {int} 		- end position of component
+		- @param  {int}			- power of the previous monome
+		- @param  {Polynome}	- the polynome
+		- @return {int}			- 1 if the monome is correct and successfully register in the polynome,
 		-					  	  0 otherwise
-		- int add_component(const char *, int, int, int, Polynome);
+		int add_component(const char*, int, int, int, Polynome);
 		
 		
 		#Polynome pol = parser('5x2 + 1');
