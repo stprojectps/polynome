@@ -17,9 +17,9 @@
 
 #include "./poly.h"
 
-#define LENGHT_EXPRESSIONS 13
+#define LENGHT_EXPRESSIONS 14
 
-static const char EXPRESSIONS[LENGHT_EXPRESSIONS] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', ' '};
+static const char EXPRESSIONS[LENGHT_EXPRESSIONS] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', ' ', 'x'};
 
 /**
  * Checks if the given parameter is 
