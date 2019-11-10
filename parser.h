@@ -90,4 +90,12 @@ int extract_power(const char *_raw_poly, int _start_component, int _end_componen
 */
 void find_component(const char* _raw_poly, int *_start_component , int *_end_component);
 
+/**
+* Function for adding a component(monome/constant) regarding the previous component
+* @param  {int} 		- sign
+* @param  {int} 		- coef
+* @param  {int}			- power
+* @param  {Polynome}	- the polynome
+*/
+void add_component(int _sign, int _coef, int _power, Polynome _polynome);
 #endif //H_PARSER_H

@@ -173,3 +173,13 @@ void find_component(const char *_raw_poly, int *_start_component, int *_end_comp
         }
     }
 }
+
+void add_component(int _sign, int _coef, int _power, Polynome _polynome)
+{
+    if (_polynome == NULL)
+    {
+        return;
+    }
+
+    _polynome->components[_power] = _sign * _coef;
+}
