@@ -43,12 +43,11 @@
 		- @return				- 1 if valid char, 0 otherwise
 		int is_valid_char(const char);
 	
-	-[ ]Function for finding the end of a component
+	-[x]Function for finding a component
 		- @param {const char *}	- polynome
-		- @param {int}			- start position of a component
-		- @return				- end of a component(monome/constant) if valid component,
-								  0 otherwise
-		int find_component_end(const char*, int);
+		- @param {int *}		- start position of a component
+		- @param {int *}		- end position of a component
+		void find_component(const char*, int *, int *);
 		
 	-[x]Extracting functions (Reserved to Sidy)
 		-[x]Function for extracting component sign
@@ -87,8 +86,9 @@
 		- @param  {const char*}	- polynome
 		- @param  {int}			- start position of component
 		- @param  {int}			- end position of component
+		- @param  {int}			- component position
 		- @return {int}			- 1 if valid, 0 otherwise.
-		int is_valid_component(const char*, int, int);
+		int is_valid_component(const char*, int, int, int);
 	
 	-[ ]Function for and adding a component(monome/constant) regarding the previous component
 		- @param  {const char*}	- polynome

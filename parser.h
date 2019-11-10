@@ -37,9 +37,10 @@ int is_valid_char(const char _c);
  * @param  {const char*}    - raw polynome
  * @param  {int}            - start position of component
  * @param  {int}            - end position of component
+ * @param  {int}            - component position
  * @return {int}            - 1 if valid component, 0 otherwise
  */
-int is_valid_component(const char* _raw_poly, int _start_component, int _end_component);
+int is_valid_component(const char* _raw_poly, int _start_component, int _end_component, int _n_component);
 
 /**
 * Function for extracting component sign
@@ -80,5 +81,13 @@ int extract_number(const char *_raw_poly, int _start_component, int _end_compone
 * @return {int}			- extracted power, 0 otherwise
 */
 int extract_power(const char *_raw_poly, int _start_component, int _end_component);
+
+/**
+* Function for finding a component
+* @param {const char *}	- polynome
+* @param {int *}		- start position of a component
+* @param {int *}		- end position of a component
+*/
+void find_component(const char* _raw_poly, int *_start_component , int *_end_component);
 
 #endif //H_PARSER_H
