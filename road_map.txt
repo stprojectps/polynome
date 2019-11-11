@@ -22,7 +22,7 @@
 	- @param {Polynome}			- Polynome
 	void Poly_free(Polynome);
 
-- [ ] Create a parser for polynomes (coef is only integers) with one unknown
+- [x] Create a parser for polynomes (coef is only integers) with one unknown
 	- input polynome is a string;
 		- valid polynomes: "5x2 + 1", "25x", "-4x3+2x-11"
 		
@@ -90,7 +90,7 @@
 		- @return {int}			- 1 if valid, 0 otherwise.
 		int is_valid_component(const char*, int, int, int);
 	
-	-[ ]Function for adding a component(monome/constant) regarding the previous component
+	-[x]Function for adding a component(monome/constant) regarding the previous component
 		- @param  {int} 		- sign
 		- @param  {int} 		- coef
 		- @param  {int}			- power
@@ -109,4 +109,4 @@
 		#{
 		#	Poly_print(pol);
 		#}
-			
+

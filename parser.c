@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdlib.h>
 #include "parser.h"
 
 int is_valid_char(const char _c)
@@ -151,6 +151,12 @@ void find_component(const char *_raw_poly, int *_start_component, int *_end_comp
         }
     }
 
+    if(_raw_poly[*_start_component] == '\0')
+    {
+        *_end_component = *_start_component;
+        return;
+    }
+
     for(i = 1;; i++)
     {
         c = _raw_poly[i + *_start_component];
@@ -182,4 +188,44 @@ void add_component(int _sign, int _coef, int _power, Polynome _polynome)
     }
 
     _polynome->components[_power] = _sign * _coef;
+}
+
+Polynome parser(const char * _raw_poly)
+{
+    int sign, number, power, n_component = 1, start = 0, end = -1, previous_power = 0;
+    Polynome polynome = NULL;
+
+    while(_raw_poly[end+1] != '\0')
+    {
+        // finds component start and end
+        find_component(_raw_poly, &start, &end);
+
+        //
+        if(_raw_poly[start] == '\0') { break; }
+
+        // checks if the component is valid
+        if(!is_valid_component(_raw_poly, start, end, n_component)) { return NULL; }
+
+        // extracts relevant information about component
+        sign = extract_sign(_raw_poly, start);
+        number = extract_number(_raw_poly, start, end);
+        power = extract_power(_raw_poly, start, end);
+
+        // initializes polynome one time
+        if(n_component == 1 && polynome == NULL) { polynome = Poly_init(power); }
+
+        // checks if previous power is grater than current power
+        if(n_component > 1 && previous_power <= power) { return NULL; }
+
+        // add new component to polynome
+        add_component(sign, number, power, polynome);
+
+        // incrementations
+        start = end + 1;
+        end = start;
+        previous_power = power;
+        n_component++;
+    }
+
+    return polynome;
 }
