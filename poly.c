@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "poly.h"
 
@@ -23,4 +24,34 @@ void Poly_free(Polynome _polynome)
         free(_polynome->components);
         free(_polynome);
     }
+}
+
+void Poly_print(Polynome _polynome)
+{
+    if(_polynome)
+    {
+        int power = _polynome->degree;
+        int * components =_polynome->components; 
+
+        for(int i = power; i >= 0; i--)
+        {
+            if(components[i] != 0)
+            {
+                if(components[i]>0)
+                {
+                    printf("+");
+                }
+
+                printf("%d", components[i]);
+
+                if(i == 1) printf("x ");
+
+                else if(i == 0) break;
+                
+                else printf("x%d ", i);
+            }
+        }
+        printf("\n");
+    }
+    else printf("Veuillez revoir votre parametre");
 }

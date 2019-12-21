@@ -22,6 +22,10 @@
 	- @param {Polynome}			- Polynome
 	void Poly_free(Polynome);
 
+- [x] Function for printing a polynome
+	- @param  {Polynome} 		- Polynome
+	void Poly_print(Polynome);
+
 - [x] Create a parser for polynomes (coef is only integers) with one unknown
 	- input polynome is a string;
 		- valid polynomes: "5x2 + 1", "25x", "-4x3+2x-11"
@@ -96,7 +100,6 @@
 		- @param  {int}			- power
 		- @param  {Polynome}	- the polynome
 		void add_component(int, int, int, Polynome);
-		
 		
 		#Polynome pol = parser('5x2 + 1');
 		#	struct * __polynome polynome = NULL;

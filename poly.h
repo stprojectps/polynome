@@ -12,4 +12,6 @@ Polynome Poly_init(int _degree);
 
 void Poly_free(Polynome _polynome);
 
+void Poly_print(Polynome _polynome);
+
 #endif //H_POLY_H
