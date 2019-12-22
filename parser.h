@@ -84,6 +84,7 @@ int extract_power(const char *_raw_poly, int _start_component, int _end_componen
 
 /**
 * Function for finding a component
+*
 * @param {const char *}	- polynome
 * @param {int *}		- start position of a component
 * @param {int *}		- end position of a component
@@ -92,6 +93,7 @@ void find_component(const char* _raw_poly, int *_start_component , int *_end_com
 
 /**
 * Function for adding a component(monome/constant)
+*
 * @param  {int} 		- sign
 * @param  {int} 		- coef
 * @param  {int}			- power
@@ -103,7 +105,9 @@ void add_component(int _sign, int _coef, int _power, Polynome _polynome);
  * Parse a string and returns a Polynome if the string is
  * a valid polynome and respects some rules
  *
- * @param  {const char*} - polynome
+ * @param  {const char*} - The raw polynomial
+ * @return {Polynome} - The pointer to the initialized polynomial, can return null pointer
+ * if the raw polynomial doesn't respect some conditions.
  */
 Polynome parser(const char * _raw_poly);
 

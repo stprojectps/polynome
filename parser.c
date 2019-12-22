@@ -215,7 +215,11 @@ Polynome parser(const char * _raw_poly)
         if(n_component == 1 && polynome == NULL) { polynome = Poly_init(power); }
 
         // checks if previous power is grater than current power
-        if(n_component > 1 && previous_power <= power) { return NULL; }
+        if(n_component > 1 && previous_power <= power)
+        {
+            Poly_free(polynome);
+            return NULL;
+        }
 
         // add new component to polynome
         add_component(sign, number, power, polynome);
